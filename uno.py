@@ -33,7 +33,10 @@ def test_function():
 # 100 loops, best of 3: 8.62 msec per loop - LENGTH = 1000
 # 100 loops, best of 3: 85.3 msec per loop - LENGTH = 10000
 
-cProfile.run('test_function()')
+# cProfile.run('test_function()')
 # 1    0.000    0.000    0.005    0.005 uno.py:7(test_function) - LENGTH = 100
 # 1    0.001    0.001    0.041    0.041 uno.py:7(test_function) - LENGTH = 1000
 # 1    0.006    0.006    0.411    0.411 uno.py:7(test_function) - LENGTH = 10000
+
+# Вывод: сложность алгоритма - О(n). Недостаток алгоритма: массив анализируетя дважды.
+# Возможно ускорение в два раза при нахождении значений за одну итерацию
