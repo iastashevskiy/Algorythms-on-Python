@@ -24,6 +24,12 @@ def dec_to_hex(number):
 			number[i] = HEX.get(number[i])
 	return number
 
+def hex_to_dec(number):
+	for i in range (0, len(number)):
+		if number[i] > 9:
+			number[i] = DEC.get(number[i])
+	return number
+
 def summ_hex(first, second):
 	first = dec_to_hex(first)
 	second = dec_to_hex(second)
@@ -49,49 +55,53 @@ def summ_hex(first, second):
 				summ_hex[i] = summ_hex[i] - 16
 				summ_hex.appendleft(1)
 
-	for i in range (0, len(summ_hex)):
-		if summ_hex[i] > 9:
-			summ_hex[i] = DEC.get(summ_hex[i])
-			
-
 	return list(summ_hex)
 
-# def mult_hex(first, second):
-# 	first = dec_to_hex(first)
-# 	second = dec_to_hex(second)
-# 	first = collections.deque(first) 
-# 	second = collections.deque(second)
-# 	first.reverse()
-# 	second.reverse()
-# 	print('mult first deq rev:', first)
-# 	print('mult first deq sec: ', second)
 
-# 	mult_hex = deque()
-# 	for i in range (0, len(first)):
-# 		mult = int(first[i])*int(second[0])
-# 		mult_hex.appendleft(mult)
+def mult_hex(first, second):
+	first = dec_to_hex(first)
+	second = dec_to_hex(second)
+	first = collections.deque(first) 
+	second = collections.deque(second)
+	first.reverse()
+	second.reverse()
 
-# 	# for i in range (len(second), len(first)):
-# 	# 	mult_hex.appendleft(int(first[i]))
+	mult_hex = []
 	
-# 	print('mult_hex_raw', mult_hex)
+	for j in range (0, len(second)):
+		temp_mult = deque()
+		for i in range (0, len(first)):
+			mult = int(first[i])*(int(second[j])*16**j)
+			temp_mult.appendleft(mult)
 
-# 	for i in range (len(mult_hex) - 1, -1, -1):
-# 		if mult_hex[i] > 15:
-# 			mult_hex[i-1] = mult_hex[i-1] + mult_hex[i]//16
-# 			mult_hex[i] = mult_hex[i] % 16
+		for i in range (len(temp_mult) - 1 , -1, -1):
+			if temp_mult[i] > 15:
+				if i > 0:
+					temp_mult[i-1] = temp_mult[i-1] + temp_mult[i]//16
+					temp_mult[i] = temp_mult[i] % 16
+				else:
+					while temp_mult[i] > 15:
+						temp_mult.appendleft(temp_mult[i]//16)
+						temp_mult[i+1] = temp_mult[i+1] % 16
+
+		temp_mult = list(temp_mult)
+		mult_hex = summ_hex(temp_mult, mult_hex)
 
 
 	return list(mult_hex)
 
+
 if len(first) >= len(second):
 	summ = summ_hex(first, second)
-	# mult = mult_hex(first, second)
+	mult = mult_hex(first, second)
 else:
 	summ = summ_hex(second, first)
-	# mult = mult_hex(second, first)
+	mult = mult_hex(second, first)
+
+summ = hex_to_dec(summ)
+mult = hex_to_dec(mult)
 
 print('Сумма чисел равна: ', summ)
-# print('произведение', mult)
+print('произведение', mult)
 
 
