@@ -24,7 +24,7 @@ def dec_to_hex(number):
 			number[i] = HEX.get(number[i])
 	return number
 
-def hex_to_dec(number):
+def get_letters(number):
 	for i in range (0, len(number)):
 		if number[i] > 9:
 			number[i] = DEC.get(number[i])
@@ -98,8 +98,8 @@ else:
 	summ = summ_hex(second, first)
 	mult = mult_hex(second, first)
 
-summ = hex_to_dec(summ)
-mult = hex_to_dec(mult)
+summ = get_letters(summ)
+mult = get_letters(mult)
 
 print('Сумма чисел равна: ', summ)
 print('произведение', mult)
