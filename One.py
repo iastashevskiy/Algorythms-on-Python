@@ -1,5 +1,6 @@
 # 5. В массиве найти максимальный отрицательный элемент. Вывести на экран его 
 # значение и позицию в массиве.
+# Python 3.6, Win 32-bit
 
 def show_size(x, level=0):
 	total_size = 0
@@ -31,12 +32,15 @@ posmax = 0
 
 for i in range (0, len(lst)):
 	if lst[i] >= lmax and lst[i] < 0:
+		# print(sys.getsizeof(lst))
 		lmax = lst[i]
 		posmax = i
 
 print('Максимальный отрицательный элемент имеет индекс ', posmax, ' и равен ', lmax)
 
 global_variables = globals()
-local_variables = locals()
 
-print('Использовано памяти: ', show_size(global_variables) + show_size(local_variables))
+
+print('Использовано памяти: ', show_size(global_variables))
+
+# Вывод после третьего варианта

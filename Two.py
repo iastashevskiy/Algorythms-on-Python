@@ -1,5 +1,8 @@
 # 5. В массиве найти максимальный отрицательный элемент. Вывести на экран его 
 # значение и позицию в массиве.
+# Python 3.6, Win 32-bit
+# Второй вариант программы: через создание вспомогательной копии, ее последующей
+# сортировки и удаления положительных членов методом list.pop()
 
 import random
 import sys
@@ -32,6 +35,7 @@ srtd.sort()
 queue = len(srtd)
 
 while srtd[queue - 1] > 0:
+	# print(sys.getsizeof(srtd))
 	srtd.pop()
 	queue = len(srtd)
 
@@ -41,5 +45,7 @@ position = lst.index(srtd[queue - 1])
 print('Максимальный отрицательный элемент имеет индекс ', position, ' и равен ', srtd[queue - 1])
 
 global_variables = globals()
-local_variables = locals()
-print('Использовано памяти: ', show_size(global_variables) + show_size(local_variables))
+
+print('Использовано памяти: ', show_size(global_variables))
+
+# Вывод после третьего варианта
