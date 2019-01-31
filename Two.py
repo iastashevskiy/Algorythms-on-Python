@@ -7,6 +7,7 @@ import random
 def merge(array):
 	left = []
 	right = []
+	res = []
 
 	if len(array) <= 1:
 		return array
@@ -23,26 +24,22 @@ def merge(array):
 	left = merge(left)
 	right = merge(right)
 
-	sort = unite(left, right)
-
-	return sort
-
-
-def unite(lst1, lst2):
-	res = []
-	while len(lst1) > 0 and len(lst2) > 0:
-		if lst1[0] <= lst2[0]:
-			res.append(lst1[0])
-			lst1.pop(0)
+	while len(left) > 0 and len(right) > 0:
+		if left[0] <= right[0]:
+			res.append(left[0])
+			left.pop(0)
 		else:
-			res.append(lst2[0])
-			lst2.pop(0)
-	if len(lst1) > 0:
-		res.extend(lst1)
-	if len(lst2) > 0:
-		res.extend(lst2)
+			res.append(right[0])
+			right.pop(0)
+			
+	if len(left) > 0:
+		res.extend(left)
+	if len(right) > 0:
+		res.extend(right)
+
 
 	return res
+
 
 
 arr = [round(random.uniform(0, 50), 2) for i in range (10)]
