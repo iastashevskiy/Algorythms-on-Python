@@ -40,12 +40,16 @@ def merge(array):
 
 	return res
 
+START = 0
+STOP= 50
+LENGTH = 10
 
-
-arr = [round(random.uniform(0, 50), 2) for i in range (10)]
+arr = [round(random.uniform(START, STOP), 2) for i in range (LENGTH)]
+print('Исходный массив:')
 print(arr)
 
 sort = merge(arr)
+print('Отсортированный массив:')
 print(sort)
 
 

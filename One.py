@@ -19,7 +19,11 @@ def bubble(array):
 		n += 1
 	return array
 
-arr = [random.randint(-100, 100) for i in range(10)]
+START = -100
+STOP= 100
+LENGTH = 10
+
+arr = [random.randint(START, STOP) for i in range(LENGTH)]
 
 print('Исходный массив: ', arr)
 print('Отсортированный массив: ', bubble(arr))
