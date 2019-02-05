@@ -6,9 +6,9 @@
 
 import random
 
-START = 0
-STOP= 50
-SIZE_M = 5
+START = random.randint(-100, 0)
+STOP= random.randint(0,100)
+SIZE_M = random.randint(2, 10)
 
 arr = [round(random.uniform(START, STOP), 2) for i in range (2*SIZE_M + 1)]
 # arr = [1,2,3,1,1,3,7] - на этом тестировал повторяющиеся элементы
