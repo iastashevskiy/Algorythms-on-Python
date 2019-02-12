@@ -43,10 +43,10 @@ def get_huffman_nodes(statement):
 		value.pop(1)
 		value.pop(0)
 		value.insert(order.index(val*m), val*m)
-		print(order)
-		# print(value)
-		print(m)
-		print(new_node.value, new_node.left, new_node.right)
+		# print(order)
+		# # print(value)
+		# print(m)
+		# print(new_node.value, new_node.left, new_node.right)
 		m = m + L
 
 	nodes.reverse()
@@ -89,7 +89,6 @@ statement = input('Введите слова: ')
 raw = get_huffman_dict(statement)
 used_letters = list(raw.keys())
 nodes = get_huffman_nodes(raw)
-print(nodes)
 
 for i in used_letters:
 	symbol = get_huffman_code(i, nodes)
