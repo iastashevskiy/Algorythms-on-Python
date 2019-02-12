@@ -27,25 +27,27 @@ def get_huffman_nodes(statement):
 	# print(order)
 	# print(value)
 	nodes = []
-
+	m = 1
+	L = len(order)
 	while len(order) > 1:
-		m = 0
+		
 		val = int(order[0]) + int(order[1])
 		lft = value[0]
 		rght = value[1]
-		new_node = Node(val, lft, rght)
+		new_node = Node(val*m, lft, rght)
 		nodes.append(new_node)
 		order.pop(1)
 		order.pop(0)
-		order.append(val)
+		order.append(val*m)
 		order.sort()
 		value.pop(1)
 		value.pop(0)
-		value.insert(order.index(val), val)
-		# print(order)
+		value.insert(order.index(val*m), val*m)
+		print(order)
 		# print(value)
-		# print(new_node.value, new_node.left, new_node.right)
-		m += 1
+		print(m)
+		print(new_node.value, new_node.left, new_node.right)
+		m = m + L
 
 	nodes.reverse()
 	return nodes
@@ -87,6 +89,7 @@ statement = input('Введите слова: ')
 raw = get_huffman_dict(statement)
 used_letters = list(raw.keys())
 nodes = get_huffman_nodes(raw)
+print(nodes)
 
 for i in used_letters:
 	symbol = get_huffman_code(i, nodes)
