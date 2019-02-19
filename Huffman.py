@@ -45,8 +45,10 @@ def get_huffman_nodes(statement):
 		value.insert(order.index(val+m), val+m)
 		# print(order)
 		# # print(value)
-		print(new_node.value, new_node.left, new_node.right)
-		m = int(m/L)
+		# print(new_node.value, new_node.left, new_node.right)
+		L = int(L/2)
+		m = m + L
+
 
 	nodes.reverse()
 	return nodes
