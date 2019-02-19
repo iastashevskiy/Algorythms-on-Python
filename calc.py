@@ -8,15 +8,7 @@ from collections import deque
 import collections
 import string
 
-first = list(input('Введите первое шестнадцатиричное число: ').upper())
-second = list(input('Введите второе шестнадцатиричное число: ').upper())
 
-
-LETTERS = ['A','B','C','D','E','F']
-VALUES = [i for i in range (10, 16)]
-
-HEX = dict(zip(LETTERS, VALUES))
-DEC = dict(zip(VALUES, LETTERS))
 
 def dec_to_hex(number):
 	for i in range (0, len(number)):
@@ -39,6 +31,7 @@ def summ_hex(first, second):
 	second.reverse()
 
 	summ_hex = deque()
+
 	for i in range (0, len(second)):
 		summ = int(first[i]) + int(second[i])
 		summ_hex.appendleft(summ)
@@ -87,9 +80,18 @@ def mult_hex(first, second):
 		temp_mult = list(temp_mult)
 		mult_hex = summ_hex(temp_mult, mult_hex)
 
-
 	return list(mult_hex)
 
+
+first = list(input('Введите первое шестнадцатиричное число: ').upper())
+second = list(input('Введите второе шестнадцатиричное число: ').upper())
+
+
+LETTERS = ['A','B','C','D','E','F']
+VALUES = [i for i in range (10, 16)]
+
+HEX = dict(zip(LETTERS, VALUES))
+DEC = dict(zip(VALUES, LETTERS))
 
 if len(first) >= len(second):
 	summ = summ_hex(first, second)
