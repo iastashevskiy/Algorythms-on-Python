@@ -34,20 +34,19 @@ def get_huffman_nodes(statement):
 		val = int(order[0]) + int(order[1])
 		lft = value[0]
 		rght = value[1]
-		new_node = Node(val*m, lft, rght)
+		new_node = Node(val+m, lft, rght)
 		nodes.append(new_node)
 		order.pop(1)
 		order.pop(0)
-		order.append(val*m)
+		order.append(val+m)
 		order.sort()
 		value.pop(1)
 		value.pop(0)
-		value.insert(order.index(val*m), val*m)
+		value.insert(order.index(val+m), val+m)
 		# print(order)
 		# # print(value)
-		# print(m)
-		# print(new_node.value, new_node.left, new_node.right)
-		m = m + L
+		print(new_node.value, new_node.left, new_node.right)
+		m = int(m/L)
 
 	nodes.reverse()
 	return nodes
@@ -57,12 +56,12 @@ def get_node_by_branch_value(value, nodes):
 	new_value = ''
 	code = ''
 	for i in range (len(nodes) -1, -1, -1):
-		if value == nodes[i].left:
-			new_value = nodes[i].value
-			code = '0'
 		if value == nodes[i].right:
 			new_value = nodes[i].value
 			code = '1'
+		if value == nodes[i].left:
+			new_value = nodes[i].value
+			code = '0'
 
 	return new_value, code
 
